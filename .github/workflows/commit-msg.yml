@@ -1,0 +1,23 @@
+name: commitlint
+
+on: push
+
+jobs:
+  commitlint:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      - name: Install commitlint
+        run: |
+          npm install --global commitlint@latest @commitlint/config-conventional conventional-changelog-conventionalcommits
+
+      - name: Validate new commits with commitlint
+        run: |
+          npx commitlint --from ${{ github.event.commits[0].id }}~1 --to ${{ github.event.after }} --verbose
