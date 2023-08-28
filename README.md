@@ -26,7 +26,13 @@ pnpm start # Run the production server
 pnpm run deploy-commands # Deploy the commands to Discord
 ```
 
-## Commit Messages
+## Conventions
+
+### Code Style
+
+We use console.log for debugging. Please remove any console.log statements before committing, and use console.info, console.warn, and console.error for logging.
+
+### Commit Messages
 
 We use conventional commit messages. Youe message should be in the format of `<type>: <subject>`. For example, `feat: add new command`. The types are as follows:
 

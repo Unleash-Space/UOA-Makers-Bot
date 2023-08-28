@@ -7,7 +7,7 @@ import {
   Events,
   Interaction,
 } from "discord.js";
-import { Command } from "./commands";
+import { Command } from "@/commands";
 
 /**
  * A discord.js client with commands.
@@ -27,7 +27,9 @@ class CustomClient<Ready extends boolean = boolean> extends Client<Ready> {
    * Handles the ready event.
    */
   handleReady() {
-    console.log(`Ready! Logged in as ${(this as CustomClient<true>).user.tag}`);
+    console.info(
+      `Client: Logged in as ${(this as CustomClient<true>).user.tag}`
+    );
   }
 
   /**
@@ -36,13 +38,12 @@ class CustomClient<Ready extends boolean = boolean> extends Client<Ready> {
    */
   async handleInteractionCreate(interaction: Interaction<CacheType>) {
     if (!interaction.isChatInputCommand()) return; // Only handle slash commands
-    console.log(interaction);
 
     // Get the command from the client.commands Collection
     const command = this.commands.get(interaction.commandName);
     if (!command) {
-      console.error(
-        `No command matching ${interaction.commandName} was found.`
+      console.info(
+        `Client: No command matching ${interaction.commandName} was found.`
       );
       return;
     }
@@ -52,7 +53,7 @@ class CustomClient<Ready extends boolean = boolean> extends Client<Ready> {
       await command.execute(interaction);
     } catch (error) {
       // Show friendly error messages to the user
-      console.error(error);
+      console.error("Client:", error);
 
       if (interaction.replied || interaction.deferred) {
         await interaction.followUp({

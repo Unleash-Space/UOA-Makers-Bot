@@ -1,6 +1,9 @@
 import { CommandInteraction, SlashCommandBuilder } from "discord.js";
 import { Command } from ".";
 
+/**
+ * A ping command.
+ */
 const command: Command = {
   data: new SlashCommandBuilder()
     .setName("ping")
