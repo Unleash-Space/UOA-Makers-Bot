@@ -5,6 +5,9 @@ import {
 } from "discord.js";
 import { importDefaultExportsInDir } from "@/common/utils";
 
+/**
+ * A slash command and its handler.
+ */
 export interface Command {
   data: SlashCommandBuilder;
   execute: (interaction: CommandInteraction) => Promise<void>;

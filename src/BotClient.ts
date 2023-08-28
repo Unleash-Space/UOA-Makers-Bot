@@ -12,10 +12,15 @@ import { Command } from "@/commands";
 /**
  * A discord.js client with commands.
  */
-class CustomClient<Ready extends boolean = boolean> extends Client<Ready> {
+class BotClient<Ready extends boolean = boolean> extends Client<Ready> {
   commands: Collection<string, Command>;
 
-  constructor(options: ClientOptions, commands: CustomClient["commands"]) {
+  /**
+   * The constructor.
+   * @param options Options for the client.
+   * @param commands The commands to add to the client.
+   */
+  constructor(options: ClientOptions, commands: BotClient["commands"]) {
     super(options);
     this.commands = commands;
 
@@ -27,9 +32,7 @@ class CustomClient<Ready extends boolean = boolean> extends Client<Ready> {
    * Handles the ready event.
    */
   handleReady() {
-    console.info(
-      `Client: Logged in as ${(this as CustomClient<true>).user.tag}`
-    );
+    console.info(`Client: Logged in as ${(this as BotClient<true>).user.tag}`);
   }
 
   /**
@@ -70,4 +73,4 @@ class CustomClient<Ready extends boolean = boolean> extends Client<Ready> {
   }
 }
 
-export default CustomClient;
+export default BotClient;

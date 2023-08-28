@@ -29,3 +29,12 @@ export const importDefaultExportsInDir = <T>(
       })
   );
 };
+
+/**
+ * Converts a date to a YYYY-MM-DD string.
+ * @param date The date to convert.
+ * @returns A YYYY-MM-DD string.
+ */
+export const toYYYYMMDD = (date: Date) => {
+  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+};

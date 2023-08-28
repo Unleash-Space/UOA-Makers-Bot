@@ -1,6 +1,9 @@
 import { Collection } from "discord.js";
 import { importDefaultExportsInDir } from "@/common/utils";
 
+/**
+ * A job that runs at a scheduled time.
+ */
 export interface Job {
   name: string;
   getFirstRunDate: () => Date;
@@ -36,12 +39,13 @@ const executeJob = (job: Job) => {
 };
 
 /**
- * Sets up all jobs.
+ * Sets up all jobs to run at their scheduled times.
  */
 export const setupJobs = () => {
   for (const [name, job] of jobs) {
     console.info(`Jobs: Setting up job ${name} at ${new Date().toISOString()}`);
 
+    executeJob(job);
     // Run the job for the first time
     setTimeout(() => {
       executeJob(job);

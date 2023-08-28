@@ -1,4 +1,4 @@
-import { getEventsInWeek } from "@/common/api";
+import { EventbriteApi } from "@/common/api";
 import { Job } from ".";
 import client from "@/client";
 import { TextBasedChannel } from "discord.js";
@@ -43,7 +43,8 @@ const job: Job = {
       );
 
     // Get events
-    const events = await getEventsInWeek(
+    const api = new EventbriteApi(process.env.EVENTBRITE_TOKEN);
+    const events = await api.getEventsInWeek(
       new Date(),
       new Date(new Date().getTime() + THREE_WEEKS)
     );
