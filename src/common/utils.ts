@@ -11,7 +11,7 @@ export const importDefaultExportsInDir = <T>(
   dirNames: string[],
   validate: (defaultExport: any) => defaultExport is T
 ) => {
-  const dir = join(__dirname, ...dirNames);
+  const dir = join(__dirname, "../", ...dirNames);
 
   return (
     // Get all files in the directory

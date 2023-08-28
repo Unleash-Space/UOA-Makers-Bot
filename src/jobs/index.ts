@@ -1,5 +1,5 @@
 import { Collection } from "discord.js";
-import { importDefaultExportsInDir } from "@/utils";
+import { importDefaultExportsInDir } from "@/common/utils";
 
 export interface Job {
   name: string;

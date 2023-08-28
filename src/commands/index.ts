@@ -3,7 +3,7 @@ import {
   CommandInteraction,
   SlashCommandBuilder,
 } from "discord.js";
-import { importDefaultExportsInDir } from "@/utils";
+import { importDefaultExportsInDir } from "@/common/utils";
 
 export interface Command {
   data: SlashCommandBuilder;

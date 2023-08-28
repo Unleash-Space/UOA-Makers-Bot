@@ -1,4 +1,12 @@
+import { getEventsInWeek } from "@/common/api";
 import { Job } from ".";
+import client from "@/client";
+import { TextBasedChannel } from "discord.js";
+
+const THREE_WEEKS = 7 * 24 * 60 * 60 * 1000 * 3;
+
+const isTextBasedChannel = (c: any): c is TextBasedChannel =>
+  "send" in c && typeof c.send === "function";
 
 /**
  * A job that posts training times for the following week every Saturday.
@@ -21,12 +29,27 @@ const job: Job = {
    * Calculates the interval between runs.
    * @returns 7 days.
    */
-  getInterval: () => 1000 * 60 * 60 * 24 * 7,
+  getInterval: () => THREE_WEEKS,
 
   /**
    * Posts training times for the following week.
    */
-  execute: async () => {},
+  execute: async () => {
+    // Get channel
+    const channel = await client.channels.fetch(process.env.EVENTS_CHANNEL_ID);
+    if (!isTextBasedChannel(channel))
+      throw new Error(
+        `postTrainings: Channel ${process.env.EVENTS_CHANNEL_ID} is not text-based`
+      );
+
+    // Get events
+    const events = await getEventsInWeek(
+      new Date(),
+      new Date(new Date().getTime() + THREE_WEEKS)
+    );
+
+    await channel.send(JSON.stringify(events));
+  },
 };
 
 export default job;

@@ -27,6 +27,6 @@ module.exports = {
     ],
     "jsdoc/require-param-type": "off",
     "jsdoc/require-returns-type": "off",
-    "no-console": ["error", { allow: ["warn", "error", "info"] }],
+    "no-console": ["warn", { allow: ["warn", "error", "info"] }],
   },
 };
