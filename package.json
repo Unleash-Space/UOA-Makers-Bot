@@ -10,6 +10,7 @@
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir dist --extensions '.ts,.tsx'",
     "start": "node .",
+    "deploy-commands": "node scripts/deployCommands.js",
     "commitlint": "commitlint -e $GIT_PARAMS",
     "prepare": "husky install",
     "preinstall": "npx only-allow pnpm"

@@ -20,6 +20,12 @@ pnpm build # Build the server for production
 pnpm start # Run the production server
 ```
 
+## Deployment
+
+```bash
+pnpm run deploy-commands # Deploy the commands to Discord
+```
+
 ## Commit Messages
 
 We use conventional commit messages. Youe message should be in the format of `<type>: <subject>`. For example, `feat: add new command`. The types are as follows:

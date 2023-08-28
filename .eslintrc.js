@@ -17,7 +17,14 @@ module.exports = {
   plugins: ["@typescript-eslint", "prettier", "jsdoc"],
   ignorePatterns: ["node_modules", "dist"],
   rules: {
-    "prettier/prettier": "error",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        trailingComma: "es5",
+      },
+    ],
     "jsdoc/require-param-type": "off",
   },
 };
