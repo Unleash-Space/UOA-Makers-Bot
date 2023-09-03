@@ -32,7 +32,9 @@ class BotClient<Ready extends boolean = boolean> extends Client<Ready> {
    * Handles the ready event.
    */
   handleReady() {
-    console.info(`Client: Logged in as ${(this as BotClient<true>).user.tag}`);
+    console.info(
+      `BotClient: Logged in as ${(this as BotClient<true>).user.tag}`
+    );
   }
 
   /**
@@ -46,7 +48,7 @@ class BotClient<Ready extends boolean = boolean> extends Client<Ready> {
     const command = this.commands.get(interaction.commandName);
     if (!command) {
       console.info(
-        `Client: No command matching ${interaction.commandName} was found.`
+        `BotClient: No command matching ${interaction.commandName} was found.`
       );
       return;
     }
@@ -56,7 +58,7 @@ class BotClient<Ready extends boolean = boolean> extends Client<Ready> {
       await command.execute(interaction);
     } catch (error) {
       // Show friendly error messages to the user
-      console.error("Client:", error);
+      console.error("BotClient:", error);
 
       if (interaction.replied || interaction.deferred) {
         await interaction.followUp({
