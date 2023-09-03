@@ -45,7 +45,7 @@ const job: Job = {
     const channel = await client.channels.fetch(process.env.EVENTS_CHANNEL_ID);
     if (!isTextBasedChannel(channel))
       throw new Error(
-        `postTrainings: Channel ${process.env.EVENTS_CHANNEL_ID} is not text-based`
+        `postPracticeSessions: Channel ${process.env.EVENTS_CHANNEL_ID} is not text-based`
       );
 
     // Get events
