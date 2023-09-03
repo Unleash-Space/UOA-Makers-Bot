@@ -3,13 +3,13 @@ import { toYYYYMMDD } from "@/common/utils";
 /**
  * Represents an Eventbrite event.
  */
-interface EventbriteEvent {
+export interface EventbriteEvent {
   id: string;
   title: string;
   summary?: string;
   description: any;
   capacity?: number;
-  start: { timezone: string; local: string; utc: string };
+  start: Date;
 }
 
 /**

@@ -38,3 +38,15 @@ export const importDefaultExportsInDir = <T>(
 export const toYYYYMMDD = (date: Date) => {
   return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 };
+
+/**
+ * Formats a date to a string.
+ * @param date The date to format.
+ * @returns A string.
+ */
+export const formatDate = (date: Date) =>
+  date.toLocaleString("en-NZ", {
+    weekday: "long",
+    hour: "numeric",
+    minute: "numeric",
+  });
